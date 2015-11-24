@@ -1,0 +1,14 @@
+# Activar el rewrite
+RewriteEngine On
+
+# Que no sea un directorio que exista
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Que no sea un archivo que exista
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Que no sea una liga simbólica
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# Todo lo que está después de index.php es un argumento
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
